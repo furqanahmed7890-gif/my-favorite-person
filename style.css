@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: radial-gradient(circle at top, #ffe6f2 0, #1b1b2f 55%, #0f172a 100%);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Soft glow overlay */
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(255,192,203,0.35), transparent 60%),
+                radial-gradient(circle at 80% 80%, rgba(173,216,230,0.35), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    width: 90%;
+    background: rgba(15, 23, 42, 0.8);
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Left: Photo */
+.photo-section {
+    flex: 1 1 320px;
+    background: linear-gradient(135deg, #f97373, #f973c9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.photo-frame {
+    border-radius: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    animation: floatPhoto 6s ease-in-out infinite;
+}
+
+.photo-frame img {
+    display: block;
+    max-width: 100%;
+    border-radius: 16px;
+}
+
+/* Right: Message */
+.message-section {
+    flex: 2 1 380px;
+    padding: 40px 35px;
+    position: relative;
+}
+
+.birthday-title {
+    font-family: "Great Vibes", cursive;
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #ffd1dc;
+    text-shadow: 0 0 10px rgba(255, 192, 203, 0.8);
+}
+
+.main-message {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    color: #e5e7eb;
+}
+
+.signature {
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 30px;
+    color: #f9fafb;
+}
+
+/* Music button */
+#music-btn {
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #6366f1, #ec4899);
+    border: none;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+}
+
+#music-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 16px 32px rgba(236, 72, 153, 0.45);
+}
+
+#music-btn.playing {
+    background: linear-gradient(135deg, #22c55e, #a3e635);
+}
+
+/* Floating hearts */
+.floating-hearts {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-hearts span {
+    position: absolute;
+    bottom: -50px;
+    color: rgba(255, 192, 203, 0.6);
+    font-size: 20px;
+    animation: floatUp 12s linear infinite;
+}
+
+.floating-hearts span:nth-child(1) {
+    left: 10%;
+    animation-duration: 11s;
+    font-size: 24px;
+}
+.floating-hearts span:nth-child(2) {
+    left: 25%;
+    animation-duration: 13s;
+    font-size: 18px;
+}
+.floating-hearts span:nth-child(3) {
+    left: 50%;
+    animation-duration: 10s;
+    font-size: 22px;
+}
+.floating-hearts span:nth-child(4) {
+    left: 70%;
+    animation-duration: 14s;
+    font-size: 20px;
+}
+.floating-hearts span:nth-child(5) {
+    left: 85%;
+    animation-duration: 12s;
+    font-size: 26px;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) translateX(20px);
+        opacity: 0;
+    }
+}
+
+/* Photo float animation */
+@keyframes floatPhoto {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive for phones */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        margin: 20px 0;
+    }
+
+    .message-section {
+        padding: 25px 20px 30px;
+    }
+
+    .birthday-title {
+        font-size: 2.3rem;
+    }
+
+    .main-message {
+        font-size: 0.98rem;
+    }
+}
